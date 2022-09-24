@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFrameworks>$(DefaultBindingTfms)</TargetFrameworks>
     <EnableDefaultItems>false</EnableDefaultItems>
+    <RootNamespace>Iot.Device.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     <!--Disabling default items so samples source won't get build by the main library-->
   </PropertyGroup>
   <ItemGroup>
@@ -9,6 +10,26 @@
     <Compile Include="Commands\Ssd1327Commands\*.cs" />
     <Compile Include="Commands\Ssd1306Commands\*.cs" />
     <Compile Include="*.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\Sh1106Commands\SetDcDcOnOff.cs" />
+    <Compile Include="Commands\Sh1106Commands\SetDisplayClockDivideRatioOscillatorFrequency.cs" />
+    <Compile Include="Commands\Sh1106Commands\SetPumpVoltage.cs" />
+    <Compile Include="Commands\Shared1x06Commands\PageAddress.cs" />
+    <Compile Include="Commands\Shared1x06Commands\EntireDisplayOn.cs" />
+    <Compile Include="Commands\Shared1x06Commands\SetComOutputScanDirection.cs" />
+    <Compile Include="Commands\Shared1x06Commands\SetComPinsHardwareConfiguration.cs" />
+    <Compile Include="Commands\Shared1x06Commands\SetDisplayClockDivideRatioOscillatorFrequency.cs" />
+    <Compile Include="Commands\Shared1x06Commands\SetDisplayOffset.cs" />
+    <Compile Include="Commands\Shared1x06Commands\SetDisplayStartLine.cs" />
+    <Compile Include="Commands\Shared1x06Commands\SetHigherColumnStartAddressForPageAddressingMode.cs" />
+    <Compile Include="Commands\Shared1x06Commands\SetLowerColumnStartAddressForPageAddressingMode.cs" />
+    <Compile Include="Commands\Shared1x06Commands\SetPageStartAddressForPageAddressingMode.cs" />
+    <Compile Include="Commands\Shared1x06Commands\SetPreChargePeriod.cs" />
+    <Compile Include="Commands\Shared1x06Commands\SetReverseDisplay.cs" />
+    <Compile Include="Commands\Shared1x06Commands\SetNormalDisplay.cs" />
+    <Compile Include="Commands\Shared1x06Commands\SetSegmentReMap.cs" />
+    <Compile Include="Commands\Shared1x06Commands\SetVcomhDeselectLevel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

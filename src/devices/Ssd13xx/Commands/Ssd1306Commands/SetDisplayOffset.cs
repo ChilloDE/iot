@@ -5,43 +5,14 @@ using System;
 
 namespace Iot.Device.Ssd13xx.Commands.Ssd1306Commands
 {
-    /// <summary>
-    /// Represents SetDisplayOffset command
-    /// </summary>
-    public class SetDisplayOffset : ISsd1306Command
+    /// <inheritdoc />
+    [Obsolete("Replaced by Sxx1x06Commands.SetDisplayOffset")]
+    public class SetDisplayOffset : Shared1x06Commands.SetDisplayOffset
     {
-        /// <summary>
-        /// This command specifies the mapping of the display start line to one of COM0-COM63
-        /// (assuming that COM0 is the display start line then the display start line register is equal to 0).
-        /// </summary>
-        /// <param name="displayOffset">Display offset with a range of 0-63.</param>
+        /// <inheritdoc cref="Shared1x06Commands.SetDisplayOffset.SetDisplayOffset(byte)"/>
         public SetDisplayOffset(byte displayOffset = 0x00)
+            : base(displayOffset)
         {
-            if (displayOffset > 0x3F)
-            {
-                throw new ArgumentOutOfRangeException(nameof(displayOffset));
-            }
-
-            DisplayOffset = displayOffset;
-        }
-
-        /// <summary>
-        /// The value that represents the command.
-        /// </summary>
-        public byte Id => 0xD3;
-
-        /// <summary>
-        /// Display offset with a range of 0-63.
-        /// </summary>
-        public byte DisplayOffset { get; }
-
-        /// <summary>
-        /// Gets the bytes that represent the command.
-        /// </summary>
-        /// <returns>The bytes that represent the command.</returns>
-        public byte[] GetBytes()
-        {
-            return new byte[] { Id, DisplayOffset };
         }
     }
 }

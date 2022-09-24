@@ -1,32 +1,17 @@
 ﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+using System;
+
 namespace Iot.Device.Ssd13xx.Commands.Ssd1306Commands
 {
-    /// <summary>
-    /// Represents SetNormalDisplay command
-    /// </summary>
-    public class SetNormalDisplay : ISsd1306Command
+    /// <inheritdoc />
+    [Obsolete("Replaced by Sxx1x06Commands.SetNormalDisplay")]
+    public class SetNormalDisplay : Shared1x06Commands.SetNormalDisplay
     {
-        /// <summary>
-        /// This command sets the display to be normal.  Displays a RAM data of 1 indicates an ON pixel.
-        /// </summary>
+        /// <inheritdoc cref="Shared1x06Commands.SetNormalDisplay.SetNormalDisplay"/>
         public SetNormalDisplay()
         {
-        }
-
-        /// <summary>
-        /// The value that represents the command.
-        /// </summary>
-        public byte Id => 0xA6;
-
-        /// <summary>
-        /// Gets the bytes that represent the command.
-        /// </summary>
-        /// <returns>The bytes that represent the command.</returns>
-        public byte[] GetBytes()
-        {
-            return new byte[] { Id };
         }
     }
 }

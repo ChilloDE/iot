@@ -11,15 +11,15 @@ namespace Iot.Device.Ssd13xx
     /// A single-chip CMOS OLED/PLED driver with controller for organic/polymer
     /// light emitting diode dot-matrix graphic display system.
     /// </summary>
-    public class Ssd1306 : Ssd13xx
+    public class Sh1106 : Ssd13xx
     {
         /// <summary>
-        /// Initializes new instance of Ssd1306 device that will communicate using I2C bus.
+        /// Initializes new instance of SH1106 device that will communicate using I2C bus.
         /// A single-chip CMOS OLED/PLED driver with controller for organic/polymer
         /// light emitting diode dot-matrix graphic display system.
         /// </summary>
         /// <param name="i2cDevice">The I2C device used for communication.</param>
-        public Ssd1306(I2cDevice i2cDevice)
+        public Sh1106(I2cDevice i2cDevice)
         : base(i2cDevice)
         {
         }
@@ -28,25 +28,25 @@ namespace Iot.Device.Ssd13xx
         /// Sends command to the device
         /// </summary>
         /// <param name="command">Command being send</param>
-        public void SendCommand(ISsd1306Command command) => SendCommand((ICommand)command);
+        public void SendCommand(ISh1106Command command) => SendCommandPrivate(command);
 
         /// <summary>
         /// Sends command to the device
         /// </summary>
         /// <param name="command">Command being send</param>
-        public void SendCommand(IShared1x06Command command) => SendCommand((ICommand)command);
+        public void SendCommand(IShared1x06Command command) => SendCommandPrivate(command);
 
         /// <summary>
         /// Sends command to the device
         /// </summary>
         /// <param name="command">Command being send</param>
-        public override void SendCommand(ISharedCommand command) => SendCommand(command);
+        public override void SendCommand(ISharedCommand command) => SendCommandPrivate(command);
 
         /// <summary>
         /// Send a command to the display controller.
         /// </summary>
         /// <param name="command">The command to send to the display controller.</param>
-        private void SendCommand(ICommand command)
+        private void SendCommandPrivate(ICommand command)
         {
             Span<byte> commandBytes = command?.GetBytes();
 

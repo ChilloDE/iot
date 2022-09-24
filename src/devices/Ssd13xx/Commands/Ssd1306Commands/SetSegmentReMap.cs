@@ -1,12 +1,13 @@
 ﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+using System;
+
 namespace Iot.Device.Ssd13xx.Commands.Ssd1306Commands
 {
-    /// <summary>
-    /// Represents SetSegmentReMap command
-    /// </summary>
-    public class SetSegmentReMap : ISsd1306Command
+    /// <inheritdoc />
+    [Obsolete("Replaced by Sxx1x06Commands.SetSegmentReMap")]
+    public class SetSegmentReMap : Shared1x06Commands.SetSegmentReMap
     {
         /// <summary>
         /// This command changes the mapping between the display data column address and the segment driver.
@@ -16,28 +17,8 @@ namespace Iot.Device.Ssd13xx.Commands.Ssd1306Commands
         /// <param name="columnAddress127">Column address 0 is mapped to SEG0 when FALSE.
         /// Column address 127 is mapped to SEG0 when TRUE.</param>
         public SetSegmentReMap(bool columnAddress127 = false)
+            : base(columnAddress127)
         {
-            ColumnAddress127 = columnAddress127;
-        }
-
-        /// <summary>
-        /// The value that represents the command.
-        /// </summary>
-        public byte Id => (byte)(ColumnAddress127 ? 0xA1 : 0xA0);
-
-        /// <summary>
-        /// Column Address 127.  Column address 127 is mapped to SEG0 when FALSE.
-        /// Column address 127 is mapped to SEG0 when TRUE.
-        /// </summary>
-        public bool ColumnAddress127 { get; set; }
-
-        /// <summary>
-        /// Gets the bytes that represent the command.
-        /// </summary>
-        /// <returns>The bytes that represent the command.</returns>
-        public byte[] GetBytes()
-        {
-            return new byte[] { Id };
         }
     }
 }
